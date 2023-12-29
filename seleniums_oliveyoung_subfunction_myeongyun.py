@@ -25,7 +25,6 @@ browser.find_element(by=By.CSS_SELECTOR, value="#reviewInfo > a ").click()
 time.sleep(4)
 
 for i in range(2,4):
-       
     # 리뷰 전체 li > div.review_cont
     select_review = "ul.inner_list > li > div.review_cont"
     element_review = browser.find_elements(by=By.CSS_SELECTOR,value=select_review)
