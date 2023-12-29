@@ -35,7 +35,7 @@ for i in range(4):  # 4개의 제품만 선택
     # 랭킹 클릭하여 back
     elements_click_back = browser.find_element(by=By.CSS_SELECTOR, value="#gnbWrap > ul > li:nth-child(2) > a >span").click()
 
-
+    
 
 # def mongo_connect() :
 #     from pymongo import MongoClient
