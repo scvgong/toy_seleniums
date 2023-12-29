@@ -10,30 +10,36 @@ import time
 capabilities = browser.capabilities
 
 
-# - 주소 
-browser.get("https://www.oliveyoung.co.kr/store/main/getBestList.do?t_page=%ED%99%88&t_click=GNB&t_gnb_type=%EB%9E%AD%ED%82%B9&t_swiping_type=N")
-
-# - html 파일 받음(and 확인)
-html = browser.page_source
-print(html)
+# - 주소 function
+def getBrowserFromURI(uri = "https://www.oliveyoung.co.kr/store/main/getBestList.do?t_page=%ED%99%88&t_click=GNB&t_gnb_type=%EB%9E%AD%ED%82%B9&t_swiping_type=N") :
+    webdriver_manager_directory = ChromeDriverManager().install()
+    browser = webdriver.Chrome(service=ChromeService(webdriver_manager_directory))
+    browser.get(uri)
+    return browser 
 
 
 # - 정보 획득
-from selenium.webdriver.common.by import By
-# from selenium.webdriver.common.keys import Keys
-# from selenium.webdriver.support.ui import Select
+def selectOliveyoung(browser) :
+    from selenium.webdriver.common.by import By
+    # 제품 클릭
+    for i in range(4):  # 4개의 제품만 선택
+        browser.find_element(by=By.CSS_SELECTOR, value="#Container > div.best-area > div.TabsConts.on > ul:nth-child(1) > li:nth-child({}) > div > a".format(i+1)).click()
 
-# 제품 클릭
-for i in range(4):  # 4개의 제품만 선택
-    elements_click_product = browser.find_element(by=By.CSS_SELECTOR, value="#Container > div.best-area > div.TabsConts.on > ul:nth-child(1) > li:nth-child({}) > div > a".format(i+1)).click()
+        time.sleep(3)
 
-    time.sleep(3)
+        # 리뷰 클릭
+        browser.find_element(by=By.CSS_SELECTOR, value="#reviewInfo > a ").click()
 
-    # 리뷰 클릭
-    elements_click_reviews = browser.find_element(by=By.CSS_SELECTOR, value="#reviewInfo > a ").click()
+        time.sleep(3)
 
-    # 랭킹 클릭하여 back
-    elements_click_back = browser.find_element(by=By.CSS_SELECTOR, value="#gnbWrap > ul > li:nth-child(2) > a >span").click()
+        # 랭킹 클릭하여 back
+        browser.find_element(by=By.CSS_SELECTOR, value="#gnbWrap > ul > li:nth-child(2) > a >span").click()
+
+    return
+    
+# 브라우저 종료
+def quitBrowser(browser) :
+    browser.quit()
 
     
 
@@ -48,5 +54,4 @@ for i in range(4):  # 4개의 제품만 선택
 # for i in range(len()) :
 #     oliveyoung_reviews.insert_one({"name":, "products":, "option":, "content":})
 
-# 브라우저 종료
-browser.quit()
+

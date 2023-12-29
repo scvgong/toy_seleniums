@@ -1,4 +1,4 @@
-import seleniums_oliveyoung_subfunction as subfunction
+import oliveyoung_kimgyoungha as subfunction
 # 기본 function 형식 - 기다림. 불릴 때 기능
 def main() :  
     try :
