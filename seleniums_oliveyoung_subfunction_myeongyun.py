@@ -15,7 +15,6 @@ browser = webdriver.Chrome(service=ChromeService(webdriver_manager_directory))
 
 # - 주소 입력
 browser.get("https://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?goodsNo=A000000192697&dispCatNo=90000010009&trackingCd=Best_Sellingbest&t_page=%EB%9E%AD%ED%82%B9&t_click=%ED%8C%90%EB%A7%A4%EB%9E%AD%ED%82%B9_%EC%A0%84%EC%B2%B4_%EC%83%81%ED%92%88%EC%83%81%EC%84%B8&t_number=1")
-    # return browser
 
 # 랭킹 주소 #Container > div.best-area > div.TabsConts.on > ul:nth-child(1) > li:nth-child(1) > div
 
