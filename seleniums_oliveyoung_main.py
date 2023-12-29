@@ -9,8 +9,7 @@ def main() :
     except :
         pass  # 업무 코드 문제 발생 시 대처 코드
     finally :
-       
-        subfunction.quitBrowser(browser=browser)
+           subfunction.quitBrowser(browser=browser)
 
 if __name__ == "__main__" :
     try :
