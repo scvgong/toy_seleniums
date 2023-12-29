@@ -30,6 +30,47 @@ def selectOliveyoung(browser) :
         browser.find_element(by=By.CSS_SELECTOR, value="#reviewInfo > a ").click()
 
         time.sleep(3)
+        
+        for x in range(2,4):
+        # 리뷰 전체 li > div.review_cont
+            select_review = "ul.inner_list > li > div.review_cont"
+            element_review = browser.find_elements(by=By.CSS_SELECTOR,value=select_review)
+
+            for index in range(len(element_review)):
+                
+                # 제품명 div > p.prd_name
+                select_title = "p.prd_name"
+                element_title = browser.find_element(by=By.CSS_SELECTOR,value=select_title)
+                title = element_title.text
+
+                # 사용자 id div > p.info_user > a.id
+                select_id = "#gdasList > li:nth-child({}) > div.info > div > p.info_user > a.id".format(index+1)
+                element_id = browser.find_element(by=By.CSS_SELECTOR,value=select_id)
+                id = element_id.text
+
+                # 피부 타입 답변 #gdasList > li:nth-child({}) > div.review_cont > div.poll_sample > dl:nth-child(1) > dd > span
+                select_type_answer = "#gdasList > li:nth-child({}) > div.review_cont > div.poll_sample > dl:nth-child(1)".format(index+1)
+                element_type_answer = browser.find_element(by=By.CSS_SELECTOR,value=select_type_answer)
+                type_asnwer = element_type_answer.text
+
+                # 피부 고민 답변 #gdasList > li:nth-child({}) > div.review_cont > div.poll_sample > dl:nth-child(2)
+                select_worry_answer = "#gdasList > li:nth-child({}) > div.review_cont > div.poll_sample > dl:nth-child(2)".format(index+1)
+                element_worry_answer = browser.find_element(by=By.CSS_SELECTOR,value=select_worry_answer)
+                worry_asnwer = element_worry_answer.text
+
+                # 자극도 답변 #gdasList > li:nth-child({}) > div.review_cont > div.poll_sample > dl:nth-child(3)
+                select_stimulation_answer = "#gdasList > li:nth-child({}) > div.review_cont > div.poll_sample > dl:nth-child(3)".format(index+1)
+                element_stimulation_answer = browser.find_element(by=By.CSS_SELECTOR,value=select_stimulation_answer)
+                stimulation_answer = element_stimulation_answer.text
+
+                print("{},{},{},{}".format(title,id,type_asnwer,worry_asnwer,stimulation_answer))
+                
+                pass
+            url = "#gdasContentsArea > div > div.pageing > a:nth-child({})".format(x+1)
+            browser.find_element(by=By.CSS_SELECTOR,value=url).click()
+            time.sleep(3)
+
+        pass
 
         # 랭킹 클릭하여 back
         browser.find_element(by=By.CSS_SELECTOR, value="#gnbWrap > ul > li:nth-child(2) > a >span").click()
