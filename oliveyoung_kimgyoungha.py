@@ -24,7 +24,7 @@ from selenium.webdriver.common.by import By
 # from selenium.webdriver.support.ui import Select
 
 # 제품 클릭
-for i in range(4):
+for i in range(4):  # 4개의 제품만 선택
     elements_click_product = browser.find_element(by=By.CSS_SELECTOR, value="#Container > div.best-area > div.TabsConts.on > ul:nth-child(1) > li:nth-child({}) > div > a".format(i+1)).click()
 
     time.sleep(3)
