@@ -10,7 +10,7 @@ import time
 capabilities = browser.capabilities
 
 
-# - 주소 https://www.w3schools.com/ 입력
+# - 주소 
 browser.get("https://www.oliveyoung.co.kr/store/main/getBestList.do?t_page=%ED%99%88&t_click=GNB&t_gnb_type=%EB%9E%AD%ED%82%B9&t_swiping_type=N")
 
 # - html 파일 받음(and 확인)
